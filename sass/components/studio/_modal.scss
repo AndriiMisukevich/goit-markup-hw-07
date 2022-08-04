@@ -1,0 +1,197 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: $backdropBackground;
+    opacity: 1;
+    transition: opacity 250ms $transitionTimingFunction,
+        visibility 250ms $transitionTimingFunction;
+
+    &.is-hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    max-width: 528px;
+    width: 100%;
+    height: 581px;
+    max-height: 100vh;
+    padding: 40px;
+    border-radius: 4px;
+
+    background-color: $modalBackground;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+        0px 2px 1px rgba(0, 0, 0, 0.2);
+
+    transform: translate(-50%, -50%) scale(1);
+
+    transition: transform 250ms $transitionTimingFunction;
+
+    .backdrop.is-hidden & {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+.close-button {
+    position: absolute;
+    top: 7px;
+    right: 9px;
+
+    display: inline-flex;
+    width: 30px;
+    height: 30px;
+    padding: 9px;
+    border: 1px solid $closeBorderColor;
+    border-radius: 50%;
+
+    background-color: transparent;
+
+    &:hover,
+    &:focus {
+        color: $hoverColor;
+    }
+}
+
+.close-button__icon {
+    fill: currentColor;
+
+    transition: color 250ms $transitionTimingFunction;
+}
+
+.modal__title {
+    margin-bottom: 12px;
+
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.15;
+    letter-spacing: 0.03em;
+}
+
+.modal__label {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: 0.01em;
+    color: $secondaryTextColor;
+}
+
+.modal__input {
+    border: 1px solid $inputBorderColor;
+    outline: none;
+    /* Без этого не видно смену цвета бордера, но благодаря как раз смене текста думаю в этом случае можно обойтись без outline */
+    border-radius: 4px;
+    padding: 12px 15px 12px 42px;
+    margin-top: 4px;
+    height: 40px;
+    box-sizing: border-box;
+
+    transition: border-color 250ms $transitionTimingFunction;
+
+    &:focus {
+        border-color: $hoverColor;
+    }
+}
+
+.modal__icon {
+    position: absolute;
+    top: 29px;
+    left: 12px;
+
+    transition: fill 250ms $transitionTimingFunction;
+
+    .modal__input:focus+& {
+        fill: $hoverColor;
+    }
+}
+
+.modal__label-comment {
+    margin-bottom: 20px;
+}
+
+.modal__input-textarea {
+    padding: 12px 16px;
+    width: 448px;
+    height: 120px;
+    resize: none;
+
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: 0.01em;
+    color: $textareaTextColor;
+}
+
+.policy {
+    margin-bottom: 30px;
+}
+
+.policy__label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 14px;
+    line-height: 1.71;
+    letter-spacing: 0.03em;
+    color: $secondaryTextColor;
+}
+
+.policy__label::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 15px;
+    margin-right: 8px;
+
+    background-image: url('../images/not-checked.svg');
+    background-size: contain;
+
+    transition: background-image 250ms $transitionTimingFunction;
+
+    /* Не было в макете, но состояние фокуса должно быть + active для того, чтобы черный цвет не было видно при клике мышкой на боксе */
+    .policy__input:focus+&,
+    .policy__input:active+& {
+        background-color: $secondaryTextColor;
+
+        border-radius: 2px;
+    }
+
+    .policy__input:checked+& {
+        border: none;
+
+        background-image: url('../images/checked.svg');
+    }
+}
+
+.policy__link {
+    color: $hoverColor;
+    text-decoration: underline;
+    padding-left: 3px;
+}
+
+.modal__sending-container {
+    text-align: center;
+}
+
+.modal__sending-button {
+    padding: 10px 55px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    width: 200px;
+    height: 50px;
+}

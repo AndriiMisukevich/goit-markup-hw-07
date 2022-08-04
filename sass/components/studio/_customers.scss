@@ -1,0 +1,41 @@
+/* Постоянные клиенты */
+.customers {
+    padding: 94px 0;
+}
+
+.customers__list {
+    display: flex;
+}
+
+.customers__item {
+    margin-right: 30px;
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.customers__link {
+    display: inline-flex;
+    width: 170px;
+    height: 90px;
+    border: 1px solid $borderColor;
+    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
+
+    color: $colorIcon;
+
+    transition: color 250ms $transitionTimingFunction,
+        border-color 250ms $transitionTimingFunction;
+
+    &:hover,
+    &:focus {
+        color: $hoverColor;
+        border-color: $hoverColor;
+    }
+}
+
+.customers__icon {
+    fill: currentColor;
+}

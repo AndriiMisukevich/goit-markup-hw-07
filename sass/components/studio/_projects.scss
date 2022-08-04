@@ -1,0 +1,37 @@
+.projects {
+    padding-top: 94px;
+    padding-bottom: 94px;
+}
+
+.projects__list {
+    display: flex;
+}
+
+.projects__item {
+    position: relative;
+
+    flex-basis: calc(100% / 3);
+    margin-right: 30px;
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.projects__description {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    padding: 27px 10px;
+    text-align: center;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.14;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: $workListColor;
+    background-color: $workListBackground;
+}
